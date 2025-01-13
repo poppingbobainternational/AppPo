@@ -1,0 +1,245 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+    
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #1d1b31;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    width: 250px;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+/* Logo y botón de colapsado */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #11101d;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .logo-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.toggle-btn {
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed .toggle-btn {
+    transform: rotate(180deg);
+}
+
+/* Menú */
+.menu {
+    padding-top: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.menu-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-item {
+    margin-bottom: 10px;
+    position: relative;
+    display: block;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.nav-item a:hover {
+    background-color: #27293d;
+}
+
+.icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/* Ocultar texto en modo colapsado */
+.sidebar.collapsed .text {
+    display: none;
+}
+
+/* Tooltip al pasar el mouse sobre los íconos */
+.sidebar.collapsed .nav-item a::after {
+    content: attr(title);
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #27293d;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.sidebar.collapsed .nav-item a:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Submenú */
+.submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 5px;
+    display: none;
+}
+
+.nav-item.open .submenu {
+    display: block;
+}
+
+.submenu li a {
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.submenu li a:hover {
+    background-color: #27293d;
+}
+
+/* Flecha para indicar el submenú desplegable */
+.arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-item.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* Contenido principal */
+.main-content {
+    padding: 20px;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 80px;
+}
+
+/* Barra de búsqueda */
+.search-box {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #27293d;
+    border-radius: 8px;
+    margin: 10px 20px;
+    transition: opacity 0.3s ease, margin 0.3s ease;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.search-box input::placeholder {
+    color: #bbb;
+}
+
+/* Ocultar la barra de búsqueda en modo colapsado */
+.sidebar.collapsed .search-box {
+    opacity: 0;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Pie de menú */
+.bottom-content {
+    padding: 10px 20px;
+}
+
+.bottom-content li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.bottom-content li a:hover {
+    background-color: #27293d;
+}
+
+
+.table {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}

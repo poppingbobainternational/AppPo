@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- ===== Boxicons CSS ===== -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <!-- Menú lateral -->
+        <nav class="sidebar" id="sidebar">
+            <header>
+                <div class="logo-container">
+                    <span class="logo">M</span>
+                    <span class="logo-text">Mi Empresa</span>
+                    <i class="bx bx-chevron-right toggle-btn" id="toggle-btn"></i>
+                </div>
+            </header>
+
+            <ul class="menu-links">
+                <li class="nav-item" title="Dashboard">
+                    <a href="/">
+                        <i class="bx bx-home-alt icon"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- Inventarios con submenú -->
+                <li class="nav-item submenu-container" title="Inventarios">
+                    <a href="#" class="submenu-toggle">
+                        <i class="bx bx-box icon"></i>
+                        <span class="text">Inventarios</span>
+                        <i class="bx bx-chevron-down arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item" title="Inventario Total">
+                            <a href="/inventarios/total">
+                                <i class="bx bx-list-ul icon"></i>
+                                <span class="text">Inventario Total</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item" title="Inventario por Producto">
+                            <a href="/inventarios/producto/Perlas">
+                                <i class="bx bx-package icon"></i>
+                                <span class="text">Inventario por Producto Perlas</span>
+                            </a>
+                        </li>
+                    
+
+
+
+                        <li class="nav-item" title="Inventario por Producto">
+                            <a href="/inventarios/producto/popping">
+                                <i class="bx bx-package icon"></i>
+                                <span class="text">Inventario por Producto Popping</span>
+                            </a>
+                        </li>
+
+
+
+
+
+                        <li class="nav-item" title="Inventario por Producto">
+                            <a href="/inventarios/producto/flavor">
+                                <i class="bx bx-package icon"></i>
+                                <span class="text">Inventario por Producto Flavor</span>
+                            </a>
+                        </li>
+
+
+
+
+
+                        <li class="nav-item" title="Conteo de Inventario">
+                            <a href="/inventarios/producto">
+                                <i class="bx bx-calculator icon"></i>
+                                <span class="text">Conteo de Inventario</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" title="Configuración">
+                    <a href="/perfil">
+                        <i class="bx bx-cog icon"></i>
+                        <span class="text">Configuración</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Parte inferior del menú -->
+            <div class="bottom-content">
+                <li title="Cerrar sesión">
+                    <a href="#">
+                        <i class="bx bx-log-out icon"></i>
+                        <span class="text">Cerrar sesión</span>
+                    </a>
+                </li>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main class="main-content" id="main-content">
+            <%- body %>
+        </main>
+    </div>
+
+    <!-- Script para interactividad -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+        // Evento para colapsar o expandir el menú lateral
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
+        // Evento para mostrar/ocultar submenús
+        submenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggle.parentElement.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
